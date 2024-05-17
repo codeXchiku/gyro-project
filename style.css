@@ -1,0 +1,16 @@
+body{
+    background: black;
+    color: white;
+}
+
+#ball{
+    position: absolute;
+    border-radius: 100%;
+    outline: #FFF dashed 20px;
+    background: radial-gradient(#fff7a7,#ffd100);
+    width: 150px;
+    height: 150px;
+    left: 45%;
+    top: 35%;
+    transition: left 0.2s linear,top 0.2s linear, transform 0.2s linear;
+}

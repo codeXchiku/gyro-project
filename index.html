@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>gyroscopic simulation</title>
+</head>
+<body>
+    <div id="report_box"></div>
+    <div id="ball"></div>
+</body>
+
+
+<script>
+let sensor = new Gyroscope();
+let x,y,z,report;
+sensor.start();
+sensor.onreading = ()=>{
+    report = "x-axis angle velocity: "+ sensor.x +"<br>";
+    report += "Y-axis angle velocity: "+ sensor.y +"<br>";
+    report += "Z-axis angle velocity: "+ sensor.z +"<br>";
+    report +="Ball current x= "+ball.offsetLeft + "<br>";
+    report +="Ball current Y= "+ball.offsetTop + "<br>";
+    report +="Ball current Rotation= "+z+"deg<br>";
+    report_box.innerHtml = report;
+    x = sensor.x * 100;
+    y = sensor.y * 100;
+    z = sensor.x * -33;
+
+    ball.style.left = (ball.offsetLeft+x)+"px";
+    ball.style.top = (ball.offsetTop-y)+"px";
+    ball.style.transform = "rotate("+z+"deg)";
+}
+sensor.onerror = errorHandler;
+function errorHandler(e) {
+    console.log(e.error.name, e.error.message)
+}
+</script>
+</html>
